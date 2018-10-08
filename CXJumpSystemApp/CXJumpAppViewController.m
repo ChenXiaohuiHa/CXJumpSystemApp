@@ -39,9 +39,11 @@
               @{@"title":@"发邮件",
                 @"data":@[@"方式一:openURL，程序会进入后台，跳转至邮件发送界面",@"方式二:使用模态跳转出邮件发送界面"]},
               @{@"title":@"打开浏览器",
-                @"data":@[@"方式一"]},
+                @"data":@[@"百度"]},
+              @{@"title":@"跳转 App Store",
+                @"data":@[@"方式一:跳转到AppStore",@"方式二:跳转到应用评分页"]},
               @{@"title":@"打开设置",
-                @"data":@[@"方式一:跳转到AppStore",@"方式二:跳转到应用评分页"]}
+                @"data":@[@"方式一:跳转到 设置",@"方式二:跳转到设置具体项, 例,蓝牙, WiFi 等(iOS10之前使用)"]}
               ];
 }
 - (void)loadTableView {
@@ -120,34 +122,48 @@
     if (indexPath.section == 0) { //打电话
         
         if (indexPath.row == 0) {
-            
+            [self callPhoneOne];
         }else if (indexPath.row == 1) {
-            
+            [self callPhoneTwo];
         }else if (indexPath.row == 2) {
-            
+            [self callPhoneThree];
         }
     }else if (indexPath.section == 1) { //发短信
         
         if (indexPath.row == 0) {
-            
+            [self sendShortMsgOne];
         }else if (indexPath.row == 1) {
-            
+            [self sendShortMsgTwo];
         }
     }else if (indexPath.section == 2) { //发邮件
         
         if (indexPath.row == 0) {
-            
+            [self sendEmailOne];
         }else if (indexPath.row == 1) {
-            
+            [self sendEmailTwo];
         }
     }else if (indexPath.section == 3) { //打开浏览器
         
-    }else if (indexPath.section == 4) { //跳转设置
+        [self openBrowser];
+    }else if (indexPath.section == 4) { //跳转 App Store
+        
+        if (indexPath.row == 0) {
+            //跳转 App Store
+            [self jumpAppStore];
+        }else if (indexPath.row == 1) {
+            //跳转到应用评分页
+            [self jumpAppStoreComments];
+        }
+    }else if (indexPath.section == 5) { //跳转设置
         
         if (indexPath.row == 0) {
             
+            //跳转设置
+            [self jumpSettingOne];
         }else if (indexPath.row == 1) {
             
+            //定位服务设置界面
+            [self jumpSettingTwo];
         }
     }
 }
@@ -274,17 +290,18 @@
         [mailCompose setSubject:@"设置邮件主题"];
         //设置邮件的正文内容
         NSString *emailContent = @"我是邮件内容";
+        
         // 是否为HTML格式
         [mailCompose setMessageBody:emailContent isHTML:NO];
         // 如使用HTML格式，则为以下代码
         // [mailCompose setMessageBody:@"<html><body><p>Hello</p><p>World！</p></body></html>" isHTML:YES];
         //添加附件
-        UIImage *image = [UIImage imageNamed:@"qq"];
+        UIImage *image = [UIImage imageNamed:@"tu.jpg"];
         NSData *imageData = UIImagePNGRepresentation(image);
-        [mailCompose addAttachmentData:imageData mimeType:@"" fileName:@"qq.png"];
-        NSString *file = [[NSBundle mainBundle] pathForResource:@"EmptyPDF" ofType:@"pdf"];
+        [mailCompose addAttachmentData:imageData mimeType:@"" fileName:@"tu.jpg"];
+        NSString *file = [[NSBundle mainBundle] pathForResource:@"no" ofType:@"pdf"];
         NSData *pdf = [NSData dataWithContentsOfFile:file];
-        [mailCompose addAttachmentData:pdf mimeType:@"" fileName:@"EmptyPDF.pdf"];
+        [mailCompose addAttachmentData:pdf mimeType:@"" fileName:@"no.pdf"];
         // 弹出邮件发送视图
         [self presentViewController:mailCompose animated:YES completion:nil];
     }else{
@@ -292,6 +309,7 @@
         [self showAlertWithTitle:@"提示信息" message:@"设备未开启邮件服务"];
     }
 }
+
 //MARK: MFMailComposeViewControllerDelegate - 发送邮件回调
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
     switch (result) {
@@ -314,7 +332,7 @@
 #pragma mark ---------- 打开浏览器 ----------
 - (void)openBrowser {
     
-    NSURL *url = [NSURL URLWithString:@"m.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"https://m.baidu.com"];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
@@ -350,7 +368,7 @@
     NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         
-        [[UIApplication sharedApplication] openURL:url];   
+         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
 }
 - (void)jumpSettingTwo {
@@ -361,9 +379,9 @@
     //URL计划就是实现跳转URL协议的名称（可以多个）。 而APP的跳转就需要设置“URL Schemes”来实现：
     
     //例:定位服务设置界面
-    NSURL *url = [NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"];
+    NSURL *url = [NSURL URLWithString:@"App-Prefs:root=General&path=About"];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
     /*
      看到这几个例子，大家有没有发现，想跳到哪个设置界面只需要prefs:root=后面的值即可！是的，就是这样的。

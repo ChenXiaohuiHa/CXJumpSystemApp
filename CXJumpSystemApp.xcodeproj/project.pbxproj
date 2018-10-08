@@ -14,6 +14,9 @@
 		C01D2DD3215B83F500557FE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C01D2DD2215B83F500557FE0 /* Assets.xcassets */; };
 		C01D2DD6215B83F500557FE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01D2DD4215B83F500557FE0 /* LaunchScreen.storyboard */; };
 		C01D2DD9215B83F500557FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C01D2DD8215B83F500557FE0 /* main.m */; };
+		C05B3BB9216340C900650D54 /* tu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C05B3BB8216340C900650D54 /* tu.jpg */; };
+		C05B3BBB2163412F00650D54 /* no.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C05B3BBA2163412F00650D54 /* no.pdf */; };
+		C066C88C21675D10001254E4 /* CXAddCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C066C88B21675D10001254E4 /* CXAddCalendarEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,10 @@
 		C01D2DD5215B83F500557FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C01D2DD7215B83F500557FE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C01D2DD8215B83F500557FE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C05B3BB8216340C900650D54 /* tu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tu.jpg; sourceTree = "<group>"; };
+		C05B3BBA2163412F00650D54 /* no.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = no.pdf; sourceTree = "<group>"; };
+		C066C88A21675D10001254E4 /* CXAddCalendarEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXAddCalendarEvent.h; sourceTree = "<group>"; };
+		C066C88B21675D10001254E4 /* CXAddCalendarEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXAddCalendarEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +74,12 @@
 				C011CE7C215E57F300B6247F /* CXJumpAppViewController.m */,
 				C011CE78215E57C800B6247F /* CXAddActionViewController.h */,
 				C011CE79215E57C800B6247F /* CXAddActionViewController.m */,
+				C066C88A21675D10001254E4 /* CXAddCalendarEvent.h */,
+				C066C88B21675D10001254E4 /* CXAddCalendarEvent.m */,
 				C01D2DCF215B83F400557FE0 /* Main.storyboard */,
 				C01D2DD2215B83F500557FE0 /* Assets.xcassets */,
+				C05B3BB8216340C900650D54 /* tu.jpg */,
+				C05B3BBA2163412F00650D54 /* no.pdf */,
 				C01D2DD4215B83F500557FE0 /* LaunchScreen.storyboard */,
 				C01D2DD7215B83F500557FE0 /* Info.plist */,
 				C01D2DD8215B83F500557FE0 /* main.m */,
@@ -133,8 +144,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C05B3BBB2163412F00650D54 /* no.pdf in Resources */,
 				C01D2DD6215B83F500557FE0 /* LaunchScreen.storyboard in Resources */,
 				C01D2DD3215B83F500557FE0 /* Assets.xcassets in Resources */,
+				C05B3BB9216340C900650D54 /* tu.jpg in Resources */,
 				C01D2DD1215B83F400557FE0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +163,7 @@
 				C01D2DCB215B83F400557FE0 /* AppDelegate.m in Sources */,
 				C011CE7A215E57C800B6247F /* CXAddActionViewController.m in Sources */,
 				C011CE7D215E57F300B6247F /* CXJumpAppViewController.m in Sources */,
+				C066C88C21675D10001254E4 /* CXAddCalendarEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
